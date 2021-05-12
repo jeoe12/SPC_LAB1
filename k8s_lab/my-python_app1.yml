@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-python-app1
+  labels:
+    app: my-python-app1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: my-python-app1
+  template:
+    metadata:
+      labels:
+        run: my-python-app1
+    spec:
+      containers:
+        - name: my-python-app1
+          image: noburi/my-repo
+          ports:
+            - containerPort: 5000
+              name: my-python-app1
+      imagePullSecrets:
+        - name: dockersecret

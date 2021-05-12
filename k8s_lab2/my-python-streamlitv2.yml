@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-streamlitv2
+  labels:
+    app: py-streamlitv2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: py-streamlitv2
+  template:
+    metadata:
+      labels:
+        run: py-streamlitv2
+    spec:
+      containers:
+        - name: py-streamlitv2
+          image: noburi/my-repo:streamlitv2
+          ports:
+            - containerPort: 8501
+              name: py-streamlitv2
+      imagePullSecrets:
+        - name: dockersecret

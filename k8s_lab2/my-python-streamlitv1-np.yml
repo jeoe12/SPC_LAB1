@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: py-streamlitv1
+spec:
+  type: NodePort
+  ports:
+    - port: 8501
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: py-streamlitv1
